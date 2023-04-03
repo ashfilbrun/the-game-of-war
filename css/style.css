@@ -1,5 +1,6 @@
+
 body {
-  background-color: #696969;
+  background-color: #fffef2;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,22 +10,30 @@ body {
 
 body h1{
   margin: top;
-  background-color: #cb2e0b;
-  color:black;
+  background-color: #e9e0d4;
+  color:#cb2e0b;
   font-size: 48px;
   border-radius: 60px;
   text-align: center;
   padding: 10px;
+  margin-top: 0px;
+  margin-bottom: 30px;
 }
 
 body h2 {
-  background-color: black;
+  background-color: #e9e0d4;
   font-display: center;
   font-size: 20px;
   color: #5b9fe5;
   border-radius: 40px;
   border: black;
   text-align: center;
+  margin-bottom:80px;
+}
+
+title {
+  font-size: large;
+  color: black;
 }
 
 .container {
@@ -33,14 +42,6 @@ body h2 {
   justify-content: center;
   align-items: center;
 }
-
-title {
-  font-size: large;
-  color: black;
-}
-
-
-
 
 .card {
   margin: 3vh;
@@ -60,21 +61,26 @@ title {
   background-color: #202d7a;
   font-weight: bold;
   border: 2px solid #202d7a;
+  border-radius: 20px;
 }
 
-.btn1 {
+.btn-2 {
   margin-top: 2vh;
   color: white;
   background-color: #202d7a;
   font-weight: bold;
   border: 2px solid #202d7a; 
+  border-radius: 20px;
+  padding: 5px;
 }
 
-.btn2 {
+.btn-3 {
   margin-top: 2vh;
   color: white;
   background-color: #202d7a;
   font-weight: bold;
   border: 2px solid #202d7a;
+  border-radius: 20px;
+  padding: 5px;
 }
 
