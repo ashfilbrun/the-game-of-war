@@ -55,16 +55,17 @@ title {
   box-shadow: 7px 7px 7px 0 rgba(41, 41, 41, 0.95) !important;
 }
 
-.btn-1 {
+.startBtn {
   margin-top: 2vh;
   color: white;
   background-color: #202d7a;
   font-weight: bold;
   border: 2px solid #202d7a;
   border-radius: 20px;
+  padding: 5px;
 }
 
-.btn-2 {
+.rulesBtn {
   margin-top: 2vh;
   color: white;
   background-color: #202d7a;
@@ -74,7 +75,8 @@ title {
   padding: 5px;
 }
 
-.btn-3 {
+
+.resetBtn {
   margin-top: 2vh;
   color: white;
   background-color: #202d7a;
@@ -83,4 +85,3 @@ title {
   border-radius: 20px;
   padding: 5px;
 }
-
