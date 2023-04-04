@@ -24,6 +24,8 @@ let compDiscardEl = document.getElementById('compDiscard')
 let startBtnEl = document.getElementById('startBtn')
 // let testDeck = document.getElementById('testDeck')
 let gameBegin= true;
+let playerScore = 0;
+let compScore = 0;
 // Event listeners
 document.getElementById('startBtn').addEventListener('click', function() { if(compDeck.length == 0 && playerDeck.length == 0 && gameBegin == true)
   {
@@ -33,18 +35,60 @@ document.getElementById('startBtn').addEventListener('click', function() { if(co
     let compCardPicked = initialDeck.splice(randIdx, 1)[0]    // Assign card with the random index to a variable
     compDeck.push(compCardPicked)   // Add card picked to deck 2
     }
+
+    for(var i = 0; i< 26; i++)
+    {
+      let randIdx = Math.floor(Math.random(initialDeck.length))
+    let playerCardPicked = initialDeck.splice(randIdx, 1)[0]    // Assign card with the random index to a variable
+    playerDeck.push(playerCardPicked)   // Add card picked to deck 2
+    }
+      gameBegin = false;
+
   }
-  else if(gameBegin == false)
+  else if((compDeck.length == 0 || playerDeck.length == 0 ) && gameBegin == false)
   {
     //compute scores and declare winner and
-    gameBegin = false;
+    if(compDeck.length == 0 )
+    {
+    alert("Player wins")
+
+    }
+    else{
+      alert("Computer Wins!")
+    }
+    document.getElementById('startBtn').disable = true;
+
+   
   }
+  else{
   if (compDeck.length > 0){  // Randomly select number from total cards remaining
-    let randIdx = Math.floor(Math.random(compDeck.length))
-    let compCardPicked = compDeck.splice(randIdx, 1)[0]    // Assign card with the random index to a variable
+    
+    let compCardPicked = compDeck.splice(0, 1)[0]    // Assign card with the random index to a variable
     compDiscard.push(compCardPicked)   // Add card picked to deck 2
   }
   console.log(compDeck.length);
+
+  if (playerDeck.length > 0){  // Randomly select number from total cards remaining
+
+    let playerCardPicked = playerDeck.splice(0, 1)[0]    // Assign card with the random index to a variable
+    playerDiscard.push(playerCardPicked)   // Add card picked to deck 2
+  }
+
+  //compute scores
+  if(compDiscard[compDiscard.length-1].value > playerDiscard[playerDiscard.length -1].value)
+  {
+    compScore += 1;
+  }
+  else if(compDiscard[compDiscard.length-1].value < playerDiscard[playerDiscard.length -1].value)
+  {
+    playerScore += 1;
+  }
+  else{
+
+  }
+  console.log(playerDeck.length);
+
+}
 })
 
 // document.getElementById('rulesBtn').addEventListener('click', handleClick)
