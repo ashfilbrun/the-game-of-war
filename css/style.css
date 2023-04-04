@@ -37,6 +37,8 @@ title {
 }
 
 .scoreboard {
+  display: grid;
+  align-items:flex-end
 
 }
 .container {

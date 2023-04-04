@@ -247,4 +247,4 @@ function render(playerCardPicked) {
   console.log(playerDiscard, 'playerDiscard')
   console.log(playerHostages,'playerHostages')
   console.log(compHostages, 'compHostages')
-  
+})
