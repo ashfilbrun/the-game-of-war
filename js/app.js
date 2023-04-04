@@ -29,17 +29,26 @@ let compScore = 0;
 // Event listeners
 document.getElementById('startBtn').addEventListener('click', function() { if(compDeck.length == 0 && playerDeck.length == 0 && gameBegin == true)
   {
+    let useDeck = initialDeck;
+
+    console.log(useDeck.length)
+    console.log(useDeck)
+    for(var i = 0; i< 26; i++)
+  
     for(var i = 0; i< 26; i++)
     {
-      let randIdx = Math.floor(Math.random(initialDeck.length))
-    let compCardPicked = initialDeck.splice(randIdx, 1)[0]    // Assign card with the random index to a variable
+     
+      let randIdx = Math.floor(Math.random()*useDeck.length)
+    let compCardPicked = useDeck.splice(randIdx, 1)[0]    // Assign card with the random index to a variable
     compDeck.push(compCardPicked)   // Add card picked to deck 2
     }
-
+   console.log(useDeck.length)
+   console.log(useDeck)
     for(var i = 0; i< 26; i++)
     {
-      let randIdx = Math.floor(Math.random(initialDeck.length))
-    let playerCardPicked = initialDeck.splice(randIdx, 1)[0]    // Assign card with the random index to a variable
+      
+      let randIdx = Math.floor(Math.random()*useDeck.length)
+    let playerCardPicked = useDeck.splice(randIdx, 1)[0]    // Assign card with the random index to a variable
     playerDeck.push(playerCardPicked)   // Add card picked to deck 2
     }
       gameBegin = false;
@@ -63,46 +72,88 @@ document.getElementById('startBtn').addEventListener('click', function() { if(co
   else{
   if (compDeck.length > 0){  // Randomly select number from total cards remaining
     
-    let compCardPicked = compDeck.splice(0, 1)[0]    // Assign card with the random index to a variable
+    let compCardPicked = compDeck.splice(0, 1)[0] 
+    console.log("Computer card: "+compCardPicked.value)   // Assign card with the random index to a variable
     compDiscard.push(compCardPicked)   // Add card picked to deck 2
   }
-  console.log(compDeck.length);
+  
 
   if (playerDeck.length > 0){  // Randomly select number from total cards remaining
 
     let playerCardPicked = playerDeck.splice(0, 1)[0]    // Assign card with the random index to a variable
+    console.log("player card value: "+playerCardPicked.value)
     playerDiscard.push(playerCardPicked)   // Add card picked to deck 2
   }
 
+  
   //compute scores
   if(compDiscard[compDiscard.length-1].value > playerDiscard[playerDiscard.length -1].value)
   {
     compScore += 1;
+    console.log("computer score incremented to "+compScore)
   }
   else if(compDiscard[compDiscard.length-1].value < playerDiscard[playerDiscard.length -1].value)
   {
     playerScore += 1;
+    console.log("player score inceremented to : "+playerScore)
   }
+  //in acase of war
   else{
+    let war = true;
+    while(war == true)
+    {
+      if(compDeck.length < 4 && compScore< playerScore)
+      {
+        alert("Player Wins!")
+        document.getElementById('startBtn').disable = true;
+      }
+      else if(playerDeck.length < 4 && playerScore < compScore)
+      {
+        alert("Computer Wins!")
+        document.getElementById('startBtn').disable = true;
+      }
+      else{
+     
+        for(var i =0 ; i < 3; i++)
+          {
+            let topcard = compDeck.splice(0, 1)[0]
+            compHostages.push(topcard)
+            topcard = playerDeck.splice(0,1)[0]
+            playerHostages.push(topcard)
 
+          }  
+          let topcardcomp = compDeck.splice(0,1)[0]; 
+         
+          compDiscard.push(topcardcomp)
+          console.log("Computer card value: "+topcardcomp.value)
+          let topcardplayer = playerDeck.splice(0,1)[0];
+          console.log("Player card value: "+topcardplayer.value)
+          playerDiscard.push(topcardplayer)
+          if(topcardcomp.value < topcardplayer.value)
+          {
+            playerScore += 1;
+            console.log("player score inceremented to : "+playerScore)
+            
+            war = false;
+          }
+          else if(topcardplayer.value < topcardcomp.value)
+          {
+            compScore +=1;
+            console.log("computer score incremeneted to : "+compScore)
+            war = false;
+          }
+      
+        }
+      }
   }
-  console.log(playerDeck.length);
+  
 
 }
 })
 
-// document.getElementById('rulesBtn').addEventListener('click', handleClick)
-// document.getElementById('startBtn').addEventListener('click', function() {
-//   shuffleDeck(initialDeck)
-//   handleStart()
-//   console.log(playerDeck)
-//   console.log(compDeck)
-//   startBtnEl.disabled = true
-// })
-
 
 document.getElementById('resetBtn').addEventListener('click', function() {
-  document.getElementById('resetBtn').innerHTML = "Hello World"
+  document.getElementById('resetBtn').innerHTML = "Hello World" //example?
 })
 
 init ()
