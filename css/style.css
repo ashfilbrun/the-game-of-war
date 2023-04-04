@@ -36,6 +36,9 @@ title {
   color: black;
 }
 
+.scoreboard {
+
+}
 .container {
   display: flex;
   flex-direction: row;

@@ -4,7 +4,6 @@ let playerDiscard = []
 let compDiscard = []
 let compDeck = []
 let compHostages = []
-
 let compCardToRemove = []
 let compCardPicked = []
 let playerCardPicked = []
@@ -12,7 +11,6 @@ let playerCardToRemove = []
 let initialDeck 
 // let getScore = []
 // console.log(playerCardPicked)
-// Cached element references
 
 let playerDeckEl = document.getElementById('playerDeck')
 let playerHostagesEl = document.getElementById('playerHostages')
@@ -27,77 +25,54 @@ let gameBegin= true;
 let playerScore = 0;
 let compScore = 0;
 // Event listeners
-document.getElementById('startBtn').addEventListener('click', function() { if(compDeck.length == 0 && playerDeck.length == 0 && gameBegin == true)
-  {
-    let useDeck = initialDeck;
+document.getElementById('startBtn').addEventListener('click', function() {if(compDeck.length == 0 && playerDeck.length == 0 && gameBegin == true) {
+  let useDeck = initialDeck;
 
-    console.log(useDeck.length)
-    console.log(useDeck)
-    for(var i = 0; i< 26; i++)
+  console.log(useDeck.length)
+  console.log(useDeck)
+  for(var i = 0; i< 26; i++)
   
-    for(var i = 0; i< 26; i++)
-    {
-     
-      let randIdx = Math.floor(Math.random()*useDeck.length)
-    let compCardPicked = useDeck.splice(randIdx, 1)[0]    // Assign card with the random index to a variable
-    compDeck.push(compCardPicked)   // Add card picked to deck 2
-    }
-   console.log(useDeck.length)
-   console.log(useDeck)
-    for(var i = 0; i< 26; i++)
-    {
-      
-      let randIdx = Math.floor(Math.random()*useDeck.length)
-    let playerCardPicked = useDeck.splice(randIdx, 1)[0]    // Assign card with the random index to a variable
-    playerDeck.push(playerCardPicked)   // Add card picked to deck 2
-    }
-      gameBegin = false;
-
+  for(var i = 0; i< 26; i++) {
+    let randIdx = Math.floor(Math.random()*useDeck.length)
+    let compCardPicked = useDeck.splice(randIdx, 1)[0]
+    compDeck.push(compCardPicked)
   }
-  else if((compDeck.length == 0 || playerDeck.length == 0 ) && gameBegin == false)
-  {
-    //compute scores and declare winner and
-    if(compDeck.length == 0 )
-    {
-    alert("Player wins")
-
+  console.log(useDeck.length)
+  console.log(useDeck)
+  for(var i = 0; i< 26; i++) {
+      let randIdx = Math.floor(Math.random()*useDeck.length)
+      let playerCardPicked = useDeck.splice(randIdx, 1)[0]    // Assign card with the random index to a variable
+      playerDeck.push(playerCardPicked)   // Add card picked to deck 2
     }
-    else{
+    gameBegin = false;
+  } else if((compDeck.length == 0 || playerDeck.length == 0 ) && gameBegin == false) {
+    if(compDeck.length == 0 ) {
+      alert("Player wins")
+    } else {
       alert("Computer Wins!")
     }
     document.getElementById('startBtn').disable = true;
-
-   
   }
-  else{
-  if (compDeck.length > 0){  // Randomly select number from total cards remaining
-    
+  else {
+  if (compDeck.length > 0){
     let compCardPicked = compDeck.splice(0, 1)[0] 
-    console.log("Computer card: "+compCardPicked.value)   // Assign card with the random index to a variable
-    compDiscard.push(compCardPicked)   // Add card picked to deck 2
+    console.log("Computer card: " + compCardPicked.value)
+    compDiscard.push(compCardPicked)
   }
-  
-
-  if (playerDeck.length > 0){  // Randomly select number from total cards remaining
-
-    let playerCardPicked = playerDeck.splice(0, 1)[0]    // Assign card with the random index to a variable
-    console.log("player card value: "+playerCardPicked.value)
-    playerDiscard.push(playerCardPicked)   // Add card picked to deck 2
-  }
-
-  
-  //compute scores
-  if(compDiscard[compDiscard.length-1].value > playerDiscard[playerDiscard.length -1].value)
-  {
-    compScore += 1;
-    console.log("computer score incremented to "+compScore)
-  }
+  if (playerDeck.length > 0){
+    let playerCardPicked = playerDeck.splice(0, 1)[0]
+    console.log("player card value: " + playerCardPicked.value)
+    playerDiscard.push(playerCardPicked)
+    if(compDiscard[compDiscard.length-1].value > playerDiscard[playerDiscard.length -1].value){
+      compScore += 1;
+      console.log("computer score incremented to " + compScore)
+    }
   else if(compDiscard[compDiscard.length-1].value < playerDiscard[playerDiscard.length -1].value)
   {
     playerScore += 1;
-    console.log("player score inceremented to : "+playerScore)
+    console.log("player score incremented to : "+ playerScore)
   }
-  //in acase of war
+  //in the case of war
   else{
     let war = true;
     while(war == true)
@@ -113,43 +88,36 @@ document.getElementById('startBtn').addEventListener('click', function() { if(co
         document.getElementById('startBtn').disable = true;
       }
       else{
-     
         for(var i =0 ; i < 3; i++)
           {
-            let topcard = compDeck.splice(0, 1)[0]
-            compHostages.push(topcard)
-            topcard = playerDeck.splice(0,1)[0]
-            playerHostages.push(topcard)
-
+            let topCard = compDeck.splice(0, 1)[0]
+            compHostages.push(topCard)
+            topCard = playerDeck.splice(0,1)[0]
+            playerHostages.push(topCard)
           }  
-          let topcardcomp = compDeck.splice(0,1)[0]; 
-         
-          compDiscard.push(topcardcomp)
-          console.log("Computer card value: "+topcardcomp.value)
-          let topcardplayer = playerDeck.splice(0,1)[0];
-          console.log("Player card value: "+topcardplayer.value)
-          playerDiscard.push(topcardplayer)
-          if(topcardcomp.value < topcardplayer.value)
+          let topCardComp = compDeck.splice(0,1)[0]; 
+          compDiscard.push(topCardComp)
+          console.log("Computer card value: " + topCardComp.value)
+          let topCardPlayer = playerDeck.splice(0,1)[0];
+          console.log("Player card value: " + topCardPlayer.value)
+          playerDiscard.push(topCardPlayer)
+          if(topCardComp.value < topCardPlayer.value)
           {
             playerScore += 1;
-            console.log("player score inceremented to : "+playerScore)
-            
+            console.log("Player score is now: " + playerScore)
             war = false;
           }
-          else if(topcardplayer.value < topcardcomp.value)
+          else if(topCardPlayer.value < topCardComp.value)
           {
             compScore +=1;
-            console.log("computer score incremeneted to : "+compScore)
+            console.log("Computer score is now: " + compScore)
             war = false;
           }
-      
         }
       }
+    }
   }
-  
-
 }
-})
 
 
 document.getElementById('resetBtn').addEventListener('click', function() {
@@ -214,38 +182,17 @@ function init() {
   ]
   console.log(initialDeck)
 }
-
-// Function to handle a button click:
-/*
-function handleClick(startBtn) {
-console.log('handleClick')
-  if (compDeck.length > 0){  // Randomly select number from total cards remaining
-    let randIdx = Math.floor(Math.random(compDeck.length))
-    let compCardPicked = compDeck.splice(randIdx, 1)[0]    // Assign card with the random index to a variable
-    compDiscard.push(compCardPicked)   // Add card picked to deck 2
-  }
   // Pass card picked to render function to display
-  render(compCardPicked)
-  console.log(playerDeck.length)
-  if (playerDeck.length > 0) {
-    let randIdx = Math.floor(Math.random()*playerDeck.length)
-    let playerCardPicked = playerDeck.splice(randIdx, 1)[0]
-    console.log(playerCardPicked)
-    playerDeck.push(playerCardPicked)
+render(compCardPicked)
+console.log(playerDeck.length)
+if (playerDeck.length > 0) {
+  let randIdx = Math.floor(Math.random()*playerDeck.length)
+  let playerCardPicked = playerDeck.splice(randIdx, 1)[0]
+  console.log(playerCardPicked)
+  playerDeck.push(playerCardPicked)
   }
-  // render(playerCardPicked)
-  // if ( compDeck.length === 0 || playerDeck.length === 0 ){
-  //   if( compDeck.length > 0){
-  //     console.log('Player Won');
-  //   } else {
-  //     console.log('Computer Won');
-  //   }
-  //   return false;
-}
 console.log('handleClick')
-*/
 
-// // Function to render deck state
 function render(compCardPicked) {
 //   // Remove outline class when first card is picked
   if (compDiscard.length === 1) {  
@@ -256,9 +203,8 @@ function render(compCardPicked) {
     compDiscardEl.classList.remove('compCardToRemove')
   }
 //   // Set card to be removed on next play
-
   let compCardToRemove = compCardPicked
-//   // console.log(cardToRemove, 'remove this card next time')
+  console.log(cardToRemove, 'remove this card next time')
 //   // Add current card picked to deck 2 element
   compDiscardEl.classList.add(compCardPicked)
 //   // Adjust shadow when deck gets above/below halfway full
@@ -292,7 +238,6 @@ function render(playerCardPicked) {
     playerDeckEl.classList.remove('back-red')
   }
 }
-
 
   console.log(compCardPicked, 'compCardPicked') 
   console.log(playerCardPicked, 'playerCardPicked')
