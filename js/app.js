@@ -38,13 +38,15 @@ document.getElementById('startBtn').addEventListener('click', function () {
   else {
     
       compCardPicked = compDeck.splice(0, 1)[0]
-      console.log("Computer card: " + compCardPicked.value)
+      console.log("Computer card value: " + compCardPicked.title)
       compDiscard.unshift(compCardPicked)
+      renderComputer(compCardPicked)
    
   
       playerCardPicked = playerDeck.splice(0, 1)[0]
-      console.log("player card value: " + playerCardPicked.value)
+      console.log("player card value: " + playerCardPicked.title)
       playerDiscard.unshift(playerCardPicked)
+      renderPlayer(playerCardPicked)
    
       if (compDiscard[compDiscard.length - 1].value > playerDiscard[playerDiscard.length - 1].value) {
         compScore += 1;
@@ -75,10 +77,12 @@ document.getElementById('startBtn').addEventListener('click', function () {
             }
             let topCardComp = compDeck.splice(0, 1)[0];
             compDiscard.unshift(topCardComp)
-            console.log("Computer card value: " + topCardComp.value)
+            renderComputer(topCardComp)
+            console.log("Computer card value: " + topCardComp.title)
             let topCardPlayer = playerDeck.splice(0, 1)[0];
-            console.log("Player card value: " + topCardPlayer.value)
+            console.log("Player card value: " + topCardPlayer.title)
             playerDiscard.unshift(topCardPlayer)
+            renderPlayer(topCardPlayer)
             if (topCardComp.value < topCardPlayer.value) {
               playerScore += 1;
               console.log("Player score is now: " + playerScore)
@@ -198,6 +202,12 @@ document.getElementById('startBtn').addEventListener('click', function () {
     console.log(compCardToRemove, 'remove this card next time')
     console.log('compDiscardEl ===', compDiscardEl, compCardPicked)
     //   // Add current card picked to deck 2 element
+    let list =  compDiscardEl.classList;
+    let nlist = compCardPicked['title']
+    for(let x of list.values)
+    {
+        nlist += " "+x
+    }
     compDiscardEl.classList.add(compCardPicked['title'])
     //   // Adjust shadow when deck gets above/below halfway full
     if (compDiscard.length === 26) {
@@ -231,8 +241,7 @@ document.getElementById('startBtn').addEventListener('click', function () {
     }
   }
 
-  console.log(compCardPicked, 'compCardPicked')
-  console.log(playerCardPicked, 'playerCardPicked')
+
   console.log(compDiscard, 'compDiscard')
   console.log(compDeck, 'compDeck')
   console.log(playerDeck, 'playerDeck')

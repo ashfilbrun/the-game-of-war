@@ -1,6 +1,9 @@
 body {
   background-image: url("https://images.pexels.com/photos/4737484/pexels-photo-4737484.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
-  /* background-color: #fffef2; */
+  background-position: center center;
+  background-attachment: fixed;
+  background-color: #5b9fe5;
+  background-repeat: no-repeat;
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -10,40 +13,59 @@ body {
 }
 
 body h1{
-  font-family: 'Rubik Pixels';
-  display: flex;
-  background-color: #e9e0d4;
+  font-family: 'Raleway', sans-serif;
+  background-color: rgba(255, 115, 229, 0.95);
   color: black;
   font-size: 48px;
   border-radius: 60px;
   text-align: center;
   padding: 10px;
   margin-top: 50px 0 0 0;
-  margin-bottom: 0px;
+  margin-bottom: 10px;
+  opacity: 70%;
 }
 
 body h2 {
-  background-color: #e9e0d4;
+  font-family: 'Raleway', sans-serif;
+  background-color: #5b9fe5;
   font-display: center;
-  font-size: 20px;
-  color: #5b9fe5;
+  font-size: 18px;
+  font-weight: 
+  color: black;
   border-radius: 25px;
   border: black;
   text-align: center;
   margin-bottom:60px;
+  opacity: 55%
+}
+
+body h3 {
+  font-family: 'Raleway', sans-serif;
+  background-color: #5b9fe5;
+  font-display: center;
+  font-size: 18px;
+  color: black;
+  border-radius: 25px;
+  border: black;
+  text-align: center;
+  margin-bottom:60px;
+  font-weight: 600;
 }
 
 title {
+  font-family: 'Raleway', sans-serif;
   font-size: large;
   color: black;
 }
 
 .scoreboard {
+  font-family: 'Raleway', sans-serif;
   color: white;
   display: flex;
   align-items:flex-end;
   font-size: 12px;
   justify-content: space-between;
+  flex-basis: auto;
 }
 .container {
   display: flex;
@@ -57,40 +79,43 @@ title {
 }
 
 .card.outline {
-  border: 0.15em dashed #202d7a;
+  border: 0.15em dashed #000000;
 }
 
 .card.shadow {
-  box-shadow: 7px 7px 7px 0 rgba(41, 41, 41, 0.95) !important;
+  box-shadow: 7px 7px 7px 0 rgba(218, 96, 195, 0.95) !important;
 }
 
 .startBtn {
+  font-family: 'Raleway', sans-serif;
   margin-top: 2vh;
-  color: white;
-  background-color: #202d7a;
+  color: rgba(218, 96, 195, 0.95);
+  background-color: transparent;
   font-weight: bold;
-  border: 2px solid #202d7a;
+  border: 2px solid #afb7e5;
   border-radius: 20px;
   padding: 5px;
 }
 
 .playBtn {
+  font-family: 'Raleway', sans-serif;
   margin-top: 2vh;
-  color: white;
-  background-color: #202d7a;
+  color: rgba(218, 96, 195, 0.95);
+  background-color: transparent;
   font-weight: bold;
-  border: 2px solid #202d7a; 
+  border: 2px solid #afb7e5; 
   border-radius: 20px;
   padding: 5px;
 }
 
 
 .resetBtn {
+  font-family: 'Raleway', sans-serif;
   margin-top: 2vh;
-  color: white;
-  background-color: #202d7a;
+  color: rgba(218, 96, 195, 0.95);
+  background-color: transparent;
   font-weight: bold;
-  border: 2px solid #202d7a;
+  border: 2px solid #afb7e5;
   border-radius: 20px;
   padding: 5px;
 }
