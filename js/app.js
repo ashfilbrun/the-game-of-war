@@ -28,6 +28,7 @@ let playerScore = 0;
 let compScore = 0;
 let war = false;
 let inducewar = 0;
+let doublewar = 0;
 // Event listeners
 document.getElementById('startBtn').addEventListener('click', function () {
   
@@ -46,7 +47,7 @@ document.getElementById('startBtn').addEventListener('click', function () {
       renderComputer(compCardPicked,compDiscard)
       compDiscard.unshift(compCardPicked)
       console.log("Computer Discard: ", compDiscard)
-      if(inducewar == 3)
+      if(inducewar == 3 || inducewar==8 || inducewar==9)
       {
         for(var i = 0; i < playerDeck.length; i++)
         {
@@ -57,8 +58,10 @@ document.getElementById('startBtn').addEventListener('click', function () {
             break;
           }
         }
+        doublewar++;
         
       }
+      
       else{
       playerCardPicked = playerDeck.splice(0, 1)[0]
       }
@@ -100,7 +103,9 @@ document.getElementById('startBtn').addEventListener('click', function () {
             renderComputer(topCardComp, compDiscard)
             compDiscard.unshift(topCardComp)
             console.log("Computer card value: " + topCardComp.title)
+           
             let topCardPlayer = playerDeck.splice(0, 1)[0];
+          
             console.log("Player card value: " + topCardPlayer.title)
             renderPlayer(topCardPlayer, playerDiscard)
             playerDiscard.unshift(topCardPlayer)
@@ -115,7 +120,22 @@ document.getElementById('startBtn').addEventListener('click', function () {
   });
 
   document.getElementById('resetBtn').addEventListener('click', function () {
-    
+    gameBegin = true
+    compDeck = []
+    playerDeck = []
+    init()
+    renderResetDeck()
+    renderResetFunction()
+    war = false
+    playerHostages = []
+    compHostages = []
+    compDiscard = []
+    playerDiscard = []
+    playerScore = 0;
+    compScore = 0;
+    compScoreEl.innerHTML= compDeck.length
+    playerScoreEl.innerHTML = playerDeck.length
+    inducewar = 0
   })
 
   document.getElementById('playBtn').addEventListener('click', function()
@@ -132,6 +152,7 @@ document.getElementById('startBtn').addEventListener('click', function () {
       renderResetFunction()
       console.log(compDeck)
       console.log("computer score incremented to " + compScore)
+      war = false
     }
     else if (compDiscard[0].value < playerDiscard[0].value) {
       playerScore += 1;
@@ -143,6 +164,7 @@ document.getElementById('startBtn').addEventListener('click', function () {
       renderResetFunction()
       console.log(playerDeck)
       console.log("player score incremented to : " + playerScore)
+      war = false
     }
     //in the case of war
     else {
@@ -191,7 +213,22 @@ document.getElementById('startBtn').addEventListener('click', function () {
         renderComputer(topCardComp, compDiscard)
         compDiscard.unshift(topCardComp)
         console.log("Computer card value: " + topCardComp.title)
+        if(inducewar == 8 )
+        {
+
+          for(var i = 0; i < playerDeck.length; i++)
+          {
+            if(playerDeck[i].value == topCardComp.value)
+            {
+              let topCardPlayer = playerDeck[i]
+              playerDeck.splice(i,1)
+              break;
+            }
+          }
+      }
+      else{
         topCardPlayer = playerDeck.splice(0, 1)[0];
+      }
         console.log("Player card value: " + topCardPlayer.title)
         renderPlayer(topCardPlayer, playerDiscard)
         playerDiscard.unshift(topCardPlayer)
@@ -279,6 +316,8 @@ document.getElementById('startBtn').addEventListener('click', function () {
       console.log(playerDeck.length)
       gameBegin = false;
     } 
+    compScoreEl.innerHTML= compDeck.length
+    playerScoreEl.innerHTML = playerDeck.length
   }
   // Pass card picked to render function to display
   function renderCompHostage(compHostages)
@@ -352,11 +391,17 @@ document.getElementById('startBtn').addEventListener('click', function () {
   function renderResetFunction()
   {
     compDiscardEl.className = "card large outline"
-    compHostagesEl.className= "card large outline"
+    compHostagesEl.className = "card large outline"
     playerDiscardEl.className = "card large outline"
     playerHostagesEl.className = "card large outline"
   }
 
+  function renderResetDeck()
+  {
+    compDeckEl.className = 'card large back-blue shadow'
+    playerDeckEl.className = 'card large back-blue shadow'
+
+  }
   console.log(compDiscard, 'compDiscard')
   console.log(compDeck, 'compDeck')
   console.log(playerDeck, 'playerDeck')
