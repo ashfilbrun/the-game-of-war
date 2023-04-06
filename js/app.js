@@ -26,7 +26,6 @@ let playerScore = 0;
 let compScore = 0;
 // Event listeners
 document.getElementById('startBtn').addEventListener('click', function () {
-  
   if ((compDeck.length == 0 || playerDeck.length == 0) && gameBegin == false) {
     if (compDeck.length == 0) {
       alert("Player wins")
@@ -36,18 +35,14 @@ document.getElementById('startBtn').addEventListener('click', function () {
     document.getElementById('startBtn').disable = true;
   }
   else {
-    
       compCardPicked = compDeck.splice(0, 1)[0]
       console.log("Computer card value: " + compCardPicked.title)
+      renderComputer(compCardPicked,compDiscard)
       compDiscard.unshift(compCardPicked)
-      renderComputer(compCardPicked)
-   
-  
       playerCardPicked = playerDeck.splice(0, 1)[0]
       console.log("player card value: " + playerCardPicked.title)
+      renderPlayer(playerCardPicked, playerDiscard)
       playerDiscard.unshift(playerCardPicked)
-      renderPlayer(playerCardPicked)
-   
       if (compDiscard[compDiscard.length - 1].value > playerDiscard[playerDiscard.length - 1].value) {
         compScore += 1;
         console.log("computer score incremented to " + compScore)
@@ -76,13 +71,15 @@ document.getElementById('startBtn').addEventListener('click', function () {
               playerHostages.unshift(topCard)
             }
             let topCardComp = compDeck.splice(0, 1)[0];
+            
+            
+            renderComputer(topCardComp, compDiscard)
             compDiscard.unshift(topCardComp)
-            renderComputer(topCardComp)
             console.log("Computer card value: " + topCardComp.title)
             let topCardPlayer = playerDeck.splice(0, 1)[0];
             console.log("Player card value: " + topCardPlayer.title)
+            renderPlayer(topCardPlayer, playerDiscard)
             playerDiscard.unshift(topCardPlayer)
-            renderPlayer(topCardPlayer)
             if (topCardComp.value < topCardPlayer.value) {
               playerScore += 1;
               console.log("Player score is now: " + playerScore)
@@ -99,10 +96,8 @@ document.getElementById('startBtn').addEventListener('click', function () {
     }
   });
 
-
-
   document.getElementById('resetBtn').addEventListener('click', function () {
-    document.getElementById('resetBtn').innerHTML = "Hello World" //example?
+    document.getElementById('resetBtn').innerHTML = "Game Reset" //example?
   })
 
   document.getElementById('playBtn').addEventListener('click', function()
@@ -188,10 +183,10 @@ document.getElementById('startBtn').addEventListener('click', function () {
   // Pass card picked to render function to display
   
 
-  function renderComputer(compCardPicked) {
+  function renderComputer(compCardPicked, compDiscard) {
     //   // Remove outline class when first card is picked
     if (compDiscard.length === 1) {
-      compDiscardEl.classList.remove("outline")
+      compDiscardEl.classList.remove("outline", compDiscard[0])
     }
     //   // Removes previous picked card from deck 2 class list
     if (compDiscard.length > 1) {
@@ -220,9 +215,9 @@ document.getElementById('startBtn').addEventListener('click', function () {
       compDeckEl.classList.remove('back-blue')
     }
   }
-  function renderPlayer(playerCardPicked) {
+  function renderPlayer(playerCardPicked, playerDiscard) {
     if (playerDiscard.length === 1) {
-      playerDiscardEl.classList.remove("outline")
+      playerDiscardEl.classList.remove("outline", playerDiscard[0])
     }
     if (playerDiscard.length > 1) {
       playerDiscardEl.classList.remove('playerCardToRemove')
