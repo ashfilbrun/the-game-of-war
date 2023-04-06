@@ -11,7 +11,7 @@
 	<style>
 		@import url('https://fonts.googleapis.com/css2?family=Fugaz+One&family=Monoton&family=Nabla&family=Nothing+You+Could+Do&family=Orbitron:wght@500&family=Permanent+Marker&family=Raleway:ital,wght@0,400;0,600;1,500;1,600;1,700&family=Righteous&family=Russo+One&display=swap');
 	</style>
-	<title>The Game of War!</title>
+	<title>The Game of War!</title>git
 </head>
 <body>
 	<h1>Welcome to the Game of War!</h1>
@@ -20,16 +20,14 @@
 	<div class="container">
 		<div id='compDeck' class='card large back-blue shadow'></div>
 		<div id='compDiscard' class='card large outline'></div>
-		<div id="compHostages" class="card large back-blue"></div>
-		<div id="playerHostages" class="card large back-blue"></div>
+		<div id="compHostages" class="card large outline"></div>
+		<div id="playerHostages" class="card large outline"></div>
 		<div id="playerDiscard" class="card large outline"></div>
 		<div id="playerDeck" class="card large back-blue shadow"></div>
 	</div>
 	<div class="scoreboard">
-		<div class="compScoreboard" data-total:"">Computer Score</div>
-		<div class="compScoreboard">Computer Cards Remaining:</div>
-		<div class="playerScoreboard">Player Score:</div>
-		<div class="playerScoreboard">Player Cards Remaining:</div>
+		<div class="compScoreboard">Computer Cards Remaining:<div id="compScoreboard"></div></div>
+		<div class="playerScoreboard">Player Cards Remaining:<div id="playerScoreboard"></div></div>
 	</div>
 	<button id="startBtn" class="startBtn">Flip Card</button>
 	<button id="playBtn" class="playBtn">Play</button>

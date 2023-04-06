@@ -20,12 +20,18 @@ let compDeckEl = document.getElementById('compDeck')
 let compHostagesEl = document.getElementById('compHostages')
 let compDiscardEl = document.getElementById('compDiscard')
 let startBtnEl = document.getElementById('startBtn')
+let playerScoreEl =  document.getElementById('playerScoreboard')
+let compScoreEl = document.getElementById('compScoreboard')
 // let testDeck = document.getElementById('testDeck')
 let gameBegin = true;
 let playerScore = 0;
 let compScore = 0;
+let war = false;
+let inducewar = 0;
 // Event listeners
 document.getElementById('startBtn').addEventListener('click', function () {
+  
+  console.log("comp deck")
   if ((compDeck.length == 0 || playerDeck.length == 0) && gameBegin == false) {
     if (compDeck.length == 0) {
       alert("Player wins")
@@ -39,40 +45,58 @@ document.getElementById('startBtn').addEventListener('click', function () {
       console.log("Computer card value: " + compCardPicked.title)
       renderComputer(compCardPicked,compDiscard)
       compDiscard.unshift(compCardPicked)
+      console.log("Computer Discard: ", compDiscard)
+      if(inducewar == 3)
+      {
+        for(var i = 0; i < playerDeck.length; i++)
+        {
+          if(playerDeck[i].value == compCardPicked.value)
+          {
+            playerCardPicked = playerDeck[i]
+            playerDeck.splice(i,1)
+            break;
+          }
+        }
+        
+      }
+      else{
       playerCardPicked = playerDeck.splice(0, 1)[0]
+      }
       console.log("player card value: " + playerCardPicked.title)
       renderPlayer(playerCardPicked, playerDiscard)
       playerDiscard.unshift(playerCardPicked)
-      if (compDiscard[compDiscard.length - 1].value > playerDiscard[playerDiscard.length - 1].value) {
-        compScore += 1;
-        console.log("computer score incremented to " + compScore)
-      }
-      else if (compDiscard[compDiscard.length - 1].value < playerDiscard[playerDiscard.length - 1].value) {
-        playerScore += 1;
-        console.log("player score incremented to : " + playerScore)
-      }
-      //in the case of war
-      else {
-        let war = true;
+      console.log("player discard:", playerDiscard)
+      if (war == true) {
+        console.log("its a war")
+        
         while (war == true) {
           if (compDeck.length < 4 && compScore < playerScore) {
             alert("Player Wins!")
+            war = false
             document.getElementById('startBtn').disable = true;
           }
           else if (playerDeck.length < 4 && playerScore < compScore) {
             alert("Computer Wins!")
+            war = false
             document.getElementById('startBtn').disable = true;
           }
           else {
+            console.log("pull three cards from each pile on to the hostage pile")
             for (var i = 0; i < 3; i++) {
               let topCard = compDeck.splice(0, 1)[0]
+              
               compHostages.unshift(topCard)
+              
+              
               topCard = playerDeck.splice(0, 1)[0]
+             
               playerHostages.unshift(topCard)
+              
             }
+            renderCompHostage( compHostages)
+            renderPlayerHostage(playerHostages)
             let topCardComp = compDeck.splice(0, 1)[0];
-            
-            
+                       
             renderComputer(topCardComp, compDiscard)
             compDiscard.unshift(topCardComp)
             console.log("Computer card value: " + topCardComp.title)
@@ -80,29 +104,105 @@ document.getElementById('startBtn').addEventListener('click', function () {
             console.log("Player card value: " + topCardPlayer.title)
             renderPlayer(topCardPlayer, playerDiscard)
             playerDiscard.unshift(topCardPlayer)
-            if (topCardComp.value < topCardPlayer.value) {
-              playerScore += 1;
-              console.log("Player score is now: " + playerScore)
-              war = false;
-            }
-            else if (topCardPlayer.value < topCardComp.value) {
-              compScore += 1;
-              console.log("Computer score is now: " + compScore)
-              war = false;
-            }
+           
           }
         }
       }
     }
+    inducewar ++;
+    compScoreEl.innerHTML= compDeck.length
+    playerScoreEl.innerHTML = playerDeck.length
   });
 
   document.getElementById('resetBtn').addEventListener('click', function () {
-    document.getElementById('resetBtn').innerHTML = "Game Reset" //example?
+    
   })
 
   document.getElementById('playBtn').addEventListener('click', function()
   {
+    let topCardComp = compDiscard[0]
+    let topCardPlayer = playerDiscard[0]
+    if (compDiscard[0].value > playerDiscard[0].value) {
+      compScore += 1;
+      compDeck  = compDeck.concat(playerDiscard ,  playerHostages , compHostages, compDiscard) 
+      playerDiscard = []
+      playerHostages = []
+      compDiscard = []
+      compHostages = []
+      renderResetFunction()
+      console.log(compDeck)
+      console.log("computer score incremented to " + compScore)
+    }
+    else if (compDiscard[0].value < playerDiscard[0].value) {
+      playerScore += 1;
+      playerDeck  = playerDeck.concat(playerDiscard ,  playerHostages , compHostages, compDiscard)
+      playerDiscard = []
+      playerHostages = []
+      compDiscard = []
+      compHostages = []
+      renderResetFunction()
+      console.log(playerDeck)
+      console.log("player score incremented to : " + playerScore)
+    }
+    //in the case of war
+    else {
+      war = true;
+      console.log(compDeck)
+      console.log(playerDeck)
+      if (topCardComp.value < topCardPlayer.value) {
+        playerScore += 1;
+        playerDeck  = playerDeck.concat(playerDiscard ,  playerHostages , compHostages, compDiscard)
+        playerDiscard = []
+        playerHostages = []
+        compDiscard = []
+        compHostages = []
+        renderResetFunction()
+        console.log("Player score is now: " + playerScore)
+        war = false;
+      }
+      else if (topCardPlayer.value < topCardComp.value) {
+        compScore += 1;
+        compDeck  = compDeck.concat(playerDiscard ,  playerHostages , compHostages, compDiscard) 
+        playerDiscard = []
+        playerHostages = []
+        compDiscard = []
+        compHostages = []
+        renderResetFunction()
+        console.log("Computer score is now: " + compScore)
+        war = false;
+      }
+      else {
+        console.log("pull three cards from each pile on to the hostage pile")
+        for (var i = 0; i < 3; i++) {
+          let topCard = compDeck.splice(0, 1)[0]
+          
+          compHostages.unshift(topCard)
+          
+          
+          topCard = playerDeck.splice(0, 1)[0]
+         
+          playerHostages.unshift(topCard)
+          
+        }
+        renderCompHostage( compHostages)
+        renderPlayerHostage(playerHostages)
+        topCardComp = compDeck.splice(0, 1)[0];
+                   
+        renderComputer(topCardComp, compDiscard)
+        compDiscard.unshift(topCardComp)
+        console.log("Computer card value: " + topCardComp.title)
+        topCardPlayer = playerDeck.splice(0, 1)[0];
+        console.log("Player card value: " + topCardPlayer.title)
+        renderPlayer(topCardPlayer, playerDiscard)
+        playerDiscard.unshift(topCardPlayer)
+        console.log(compDeck)
+        console.log(playerDeck)
+      }
+      
+    }
 
+    compScoreEl.innerHTML= compDeck.length
+      playerScoreEl.innerHTML = playerDeck.length
   })
 
   init()
@@ -181,28 +281,39 @@ document.getElementById('startBtn').addEventListener('click', function () {
     } 
   }
   // Pass card picked to render function to display
-  
+  function renderCompHostage(compHostages)
+  {
+    if(compHostages.length > 0)
+    {
+      compHostagesEl.classList.remove("outline")
+      compHostagesEl.classList.add("back-blue", "shadow")
+    }
+  }
+  function renderPlayerHostage(playerHostages)
+  {
+    if(playerHostages.length > 0)
+    {
+      playerHostagesEl.classList.remove("outline")
+      playerHostagesEl.classList.add("back-blue", "shadow")
+    }
+  }
 
   function renderComputer(compCardPicked, compDiscard) {
     //   // Remove outline class when first card is picked
-    if (compDiscard.length === 1) {
-      compDiscardEl.classList.remove("outline", compDiscard[0])
+    if (compDiscard.length >=1 ) {
+      compDiscardEl.classList.remove("outline", compDiscard[0].title)
     }
     //   // Removes previous picked card from deck 2 class list
+    /*
     if (compDiscard.length > 1) {
       compDiscardEl.classList.remove('compCardToRemove')
     }
+    */
     //   // Set card to be removed on next play
     let compCardToRemove = compCardPicked
     console.log(compCardToRemove, 'remove this card next time')
     console.log('compDiscardEl ===', compDiscardEl, compCardPicked)
     //   // Add current card picked to deck 2 element
-    let list =  compDiscardEl.classList;
-    let nlist = compCardPicked['title']
-    for(let x of list.values)
-    {
-        nlist += " "+x
-    }
     compDiscardEl.classList.add(compCardPicked['title'])
     //   // Adjust shadow when deck gets above/below halfway full
     if (compDiscard.length === 26) {
@@ -214,14 +325,15 @@ document.getElementById('startBtn').addEventListener('click', function () {
       compDeckEl.classList.add('outline')
       compDeckEl.classList.remove('back-blue')
     }
+    
   }
   function renderPlayer(playerCardPicked, playerDiscard) {
-    if (playerDiscard.length === 1) {
-      playerDiscardEl.classList.remove("outline", playerDiscard[0])
+    if (playerDiscard.length >= 1) {
+      playerDiscardEl.classList.remove("outline", playerDiscard[0].title)
     }
-    if (playerDiscard.length > 1) {
-      playerDiscardEl.classList.remove('playerCardToRemove')
-    }
+    // if (playerDiscard.length > 1) {
+    //   playerDiscardEl.classList.remove('playerCardToRemove')
+    // }
     let playerCardToRemove = playerCardPicked
     console.log(playerDiscardEl)
     console.log(playerCardPicked)
@@ -234,8 +346,16 @@ document.getElementById('startBtn').addEventListener('click', function () {
       playerDeckEl.classList.add('outline')
       playerDeckEl.classList.remove('back-red')
     }
-  }
+    
 
+  }
+  function renderResetFunction()
+  {
+    compDiscardEl.className = "card large outline"
+    compHostagesEl.className= "card large outline"
+    playerDiscardEl.className = "card large outline"
+    playerHostagesEl.className = "card large outline"
+  }
 
   console.log(compDiscard, 'compDiscard')
   console.log(compDeck, 'compDeck')
