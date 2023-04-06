@@ -22,7 +22,7 @@ let compDiscardEl = document.getElementById('compDiscard')
 let startBtnEl = document.getElementById('startBtn')
 let playerScoreEl =  document.getElementById('playerScoreboard')
 let compScoreEl = document.getElementById('compScoreboard')
-// let testDeck = document.getElementById('testDeck')
+
 let gameBegin = true;
 let playerScore = 0;
 let compScore = 0;
@@ -385,8 +385,6 @@ document.getElementById('startBtn').addEventListener('click', function () {
       playerDeckEl.classList.add('outline')
       playerDeckEl.classList.remove('back-red')
     }
-    
-
   }
   function renderResetFunction()
   {
@@ -395,12 +393,10 @@ document.getElementById('startBtn').addEventListener('click', function () {
     playerDiscardEl.className = "card large outline"
     playerHostagesEl.className = "card large outline"
   }
-
   function renderResetDeck()
   {
     compDeckEl.className = 'card large back-blue shadow'
     playerDeckEl.className = 'card large back-blue shadow'
-
   }
   console.log(compDiscard, 'compDiscard')
   console.log(compDeck, 'compDeck')
