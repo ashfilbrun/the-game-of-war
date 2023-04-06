@@ -31,7 +31,6 @@ let inducewar = 0;
 let doublewar = 0;
 // Event listeners
 document.getElementById('startBtn').addEventListener('click', function () {
-  
   console.log("comp deck")
   if ((compDeck.length == 0 || playerDeck.length == 0) && gameBegin == false) {
     if (compDeck.length == 0) {
@@ -59,9 +58,7 @@ document.getElementById('startBtn').addEventListener('click', function () {
           }
         }
         doublewar++;
-        
       }
-      
       else{
       playerCardPicked = playerDeck.splice(0, 1)[0]
       }
@@ -71,7 +68,6 @@ document.getElementById('startBtn').addEventListener('click', function () {
       console.log("player discard:", playerDiscard)
       if (war == true) {
         console.log("its a war")
-        
         while (war == true) {
           if (compDeck.length < 4 && compScore < playerScore) {
             alert("Player Wins!")
@@ -87,29 +83,20 @@ document.getElementById('startBtn').addEventListener('click', function () {
             console.log("pull three cards from each pile on to the hostage pile")
             for (var i = 0; i < 3; i++) {
               let topCard = compDeck.splice(0, 1)[0]
-              
               compHostages.unshift(topCard)
-              
-              
               topCard = playerDeck.splice(0, 1)[0]
-             
               playerHostages.unshift(topCard)
-              
             }
             renderCompHostage( compHostages)
             renderPlayerHostage(playerHostages)
-            let topCardComp = compDeck.splice(0, 1)[0];
-                       
+            let topCardComp = compDeck.splice(0, 1)[0];        
             renderComputer(topCardComp, compDiscard)
             compDiscard.unshift(topCardComp)
             console.log("Computer card value: " + topCardComp.title)
-           
             let topCardPlayer = playerDeck.splice(0, 1)[0];
-          
             console.log("Player card value: " + topCardPlayer.title)
             renderPlayer(topCardPlayer, playerDiscard)
             playerDiscard.unshift(topCardPlayer)
-           
           }
         }
       }
@@ -118,7 +105,6 @@ document.getElementById('startBtn').addEventListener('click', function () {
     compScoreEl.innerHTML= compDeck.length
     playerScoreEl.innerHTML = playerDeck.length
   });
-
   document.getElementById('resetBtn').addEventListener('click', function () {
     gameBegin = true
     compDeck = []
@@ -138,7 +124,7 @@ document.getElementById('startBtn').addEventListener('click', function () {
     inducewar = 0
   })
 
-  document.getElementById('playBtn').addEventListener('click', function()
+  document.getElementById('collectBtn').addEventListener('click', function()
   {
     let topCardComp = compDiscard[0]
     let topCardPlayer = playerDiscard[0]
@@ -197,19 +183,13 @@ document.getElementById('startBtn').addEventListener('click', function () {
         console.log("pull three cards from each pile on to the hostage pile")
         for (var i = 0; i < 3; i++) {
           let topCard = compDeck.splice(0, 1)[0]
-          
           compHostages.unshift(topCard)
-          
-          
           topCard = playerDeck.splice(0, 1)[0]
-         
           playerHostages.unshift(topCard)
-          
         }
         renderCompHostage( compHostages)
         renderPlayerHostage(playerHostages)
-        topCardComp = compDeck.splice(0, 1)[0];
-                   
+        topCardComp = compDeck.splice(0, 1)[0];       
         renderComputer(topCardComp, compDiscard)
         compDiscard.unshift(topCardComp)
         console.log("Computer card value: " + topCardComp.title)
