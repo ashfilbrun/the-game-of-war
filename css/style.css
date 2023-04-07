@@ -68,6 +68,7 @@ title {
   justify-content: space-between;
   flex-basis: auto;
 }
+
 .container {
   display: flex;
   flex-direction: row;
@@ -98,7 +99,7 @@ title {
   padding: 5px;
 }
 
-.playBtn {
+.collectBtn {
   font-family: 'Raleway', sans-serif;
   margin-top: 2vh;
   color: rgba(218, 96, 195, 0.95);
@@ -108,7 +109,6 @@ title {
   border-radius: 20px;
   padding: 5px;
 }
-
 
 .resetBtn {
   font-family: 'Raleway', sans-serif;
