@@ -29,7 +29,7 @@ Technologies Used:
 Next Steps: 
 Icebox items:
 - make game mobile-friendly
-- add dark mode
+- add light mode
 - play music during game
 - add personal name credit
 - add animation
