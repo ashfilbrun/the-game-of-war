@@ -24,6 +24,7 @@ body h1{
   margin-top: 70px 0 0 0;
   margin-bottom: 10px;
   opacity: 70%;
+  padding: 5px;
 }
 
 body h2 {
@@ -38,6 +39,7 @@ body h2 {
   text-align: center;
   margin-bottom:60px;
   opacity: 65%;
+  padding: 5px;
 }
 
 body h3 {
@@ -50,7 +52,8 @@ body h3 {
   border: black;
   text-align: center;
   margin-bottom:60px;
-  font-weight: 600;
+  font-weight: bold;
+  padding: 5px;
 }
 
 title {
@@ -67,6 +70,7 @@ title {
   font-size: 12px;
   justify-content: space-between;
   flex-basis: auto;
+  font-weight: bold;
 }
 
 .container {
