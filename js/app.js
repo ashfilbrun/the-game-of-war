@@ -111,7 +111,7 @@ document.getElementById('startBtn').addEventListener('click', function () {
     renderPlayer(topCardPlayer, playerDiscard)
     playerDiscard.unshift(topCardPlayer)
     } else {
-      h3El.innerHTML = " "
+      h3El.innerHTML= " "
       collectCardButton.disabled = false
       compCardPicked = compDeck.splice(0, 1)[0]
       renderComputer(compCardPicked,compDiscard)
@@ -128,7 +128,7 @@ document.getElementById('startBtn').addEventListener('click', function () {
           }
         }
         doublewar++;
-      }
+      } 
       else{
       playerCardPicked = playerDeck.splice(0, 1)[0]
       }
