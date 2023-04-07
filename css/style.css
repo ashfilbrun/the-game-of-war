@@ -82,6 +82,7 @@ title {
 
 .card.outline {
   border: 0.15em dashed #000000;
+  background-color:white
 }
 
 .card.shadow {
