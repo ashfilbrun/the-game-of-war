@@ -9,50 +9,46 @@ let compCardPicked = []
 let playerCardPicked = []
 let playerCardToRemove = []
 let initialDeck
-// let getScore = []
-// console.log(playerCardPicked)
 let h3El = document.getElementById("h3")
 let playerDeckEl = document.getElementById('playerDeck')
 let playerHostagesEl = document.getElementById('playerHostages')
 let playerDiscardEl = document.getElementById('playerDiscard')
-// console.log(playerDiscardEl)
 let compDeckEl = document.getElementById('compDeck')
 let compHostagesEl = document.getElementById('compHostages')
 let compDiscardEl = document.getElementById('compDiscard')
 let startBtnEl = document.getElementById('startBtn')
 let playerScoreEl =  document.getElementById('playerScoreboard')
 let compScoreEl = document.getElementById('compScoreboard')
-
 let gameBegin = true;
 let playerScore = 0;
 let compScore = 0;
 let war = false;
 let inducewar = 0;
 let doublewar = 0;
-h3El.innerHTML = "Begin Game!"
-//butttons
+h3El.innerHTML = "Begin Game by clicking 'Flip Card' button below!"
+
 let flipCardButton = document.getElementById('startBtn');
 let collectCardButton = document.getElementById('collectBtn');
 
 // Event listeners
 document.getElementById('startBtn').addEventListener('click', function () {  
-  if ((compDeck.length == 0 || playerDeck.length == 0) && gameBegin == false) {
-    if (compDeck.length == 0) {
-      h3El.innerHTML = "Player Wins! Score: "+playerScore
+  if ((compDeck.length === 0 || playerDeck.length === 0) && gameBegin === false) {
+    if (compDeck.length === 0) {
+      h3El.innerHTML = "Player Wins!"
       flipCardButton.disabled = true;
       collectCardButton.disabled = true;
       return;
     } else {
-      h3El.innerHTML = "Computer Wins! Score: "+compScore
+      h3El.innerHTML = "Computer Wins!"
       flipCardButton.disabled = true;
       collectCardButton.disabled = true;
       return;
     }
   }
   else if (war === true) {
-    if(compDeck.length < 4 && compDeck.length == playerDeck.length)
+    if(compDeck.length < 4 && compDeck.length === playerDeck.length)
     {
-      h3El.innerHTML = "The Game is a draw!" 
+      h3El.innerHTML = "The Game is a Draw!" 
       flipCardButton.disabled = true;
       collectCardButton.disabled = true;
       return;
@@ -84,11 +80,11 @@ document.getElementById('startBtn').addEventListener('click', function () {
     renderComputer(topCardComp, compDiscard)
     compDiscard.unshift(topCardComp)
     let topCardPlayer;
-    if(inducewar == 8 )
+    if(inducewar === 8 )
     {
       for(var i = 0; i < playerDeck.length; i++)
       {
-        if(playerDeck[i].value == topCardComp.value)
+        if(playerDeck[i].value === topCardComp.value)
         {
           topCardPlayer = playerDeck[i]
           playerDeck.splice(i,1)
@@ -107,7 +103,7 @@ document.getElementById('startBtn').addEventListener('click', function () {
     }
     else
     {  
-      h3El.innerHTML = "it's a war!"
+      h3El.innerHTML = "War!"
       flipCardButton.disabled = false;
       war = true;
       collectCardButton.disabled = true;
@@ -120,7 +116,7 @@ document.getElementById('startBtn').addEventListener('click', function () {
       compCardPicked = compDeck.splice(0, 1)[0]
       renderComputer(compCardPicked,compDiscard)
       compDiscard.unshift(compCardPicked)
-      if(inducewar == 3 || inducewar==8 || inducewar==9)
+      if(inducewar === 3 || inducewar === 8 || inducewar === 9)
       {
         for(var i = 0; i < playerDeck.length; i++)
         {
@@ -141,7 +137,7 @@ document.getElementById('startBtn').addEventListener('click', function () {
       flipCardButton.disabled = true;
       if(playerDiscard[0].value  == compDiscard[0].value)
       {
-        h3El.innerHTML = "It's a war"
+        h3El.innerHTML = "War!"
         flipCardButton.disabled = false;
         war = true;
         collectCardButton.disabled = true;
@@ -169,7 +165,7 @@ document.getElementById('startBtn').addEventListener('click', function () {
     compScore = 0;
     compScoreEl.innerHTML= compDeck.length
     playerScoreEl.innerHTML = playerDeck.length
-    h3El.innerHTML = "Begin Game!"
+    h3El.innerHTML = "Begin Game by clicking 'Flip Card' button below!"
     inducewar = 0
     flipCardButton.disabled = false
     collectCardButton.disabled= true
@@ -328,7 +324,7 @@ document.getElementById('startBtn').addEventListener('click', function () {
     }
     if (playerDeck.length === 0) {
       playerDeckEl.classList.add('outline')
-      playerDeckEl.classList.remove('back-red')
+      playerDeckEl.classList.remove('back-blue')
     }
   }
   function renderResetFunction()
