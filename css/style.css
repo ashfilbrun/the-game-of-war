@@ -65,9 +65,9 @@ title {
   font-family: 'Raleway', sans-serif;
   color: white;
   display: flex;
-  align-items:flex-end;
+  align-items: stretch;
   font-size: 14px;
-  justify-content: space-between;
+  justify-content: center;
   flex-basis: auto;
   font-weight: bold;
 }
@@ -89,14 +89,29 @@ title {
 }
 
 .card.shadow {
-  box-shadow: 7px 7px 7px 0 rgba(218, 96, 195, 0.95) !important;
+  box-shadow: 7px 7px 7px 0 rgba(255, 153, 236, 0.95) !important;
 }
 
-.startBtn {
+.buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   font-family: 'Raleway', sans-serif;
   margin-top: 2vh;
-  color: rgba(218, 96, 195, 0.95);
-  background-color: transparent;
+  color: rgba(157, 23, 132, 0.95);
+  background-color: #afb7e5;
+  font-weight: bold;
+  border: 2px solid #afb7e5;
+  border-radius: 20px;
+  padding: 5px;
+}
+
+.flipBtn {
+  font-family: 'Raleway', sans-serif;
+  margin-top: 2vh;
+  color: rgba(157, 23, 132, 0.95);
+  background-color: #afb7e5;
   font-weight: bold;
   border: 2px solid #afb7e5;
   border-radius: 20px;
@@ -106,8 +121,8 @@ title {
 .collectBtn {
   font-family: 'Raleway', sans-serif;
   margin-top: 2vh;
-  color: rgba(218, 96, 195, 0.95);
-  background-color: transparent;
+  color: rgba(157, 23, 132, 0.95);
+  background-color: #ffffff;
   font-weight: bold;
   border: 2px solid #afb7e5; 
   border-radius: 20px;
@@ -117,8 +132,8 @@ title {
 .resetBtn {
   font-family: 'Raleway', sans-serif;
   margin-top: 2vh;
-  color: rgba(218, 96, 195, 0.95);
-  background-color: transparent;
+  color: rgba(157, 23, 132, 0.95);
+  background-color: #afb7e5;
   font-weight: bold;
   border: 2px solid #afb7e5;
   border-radius: 20px;

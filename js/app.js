@@ -16,7 +16,7 @@ let playerDiscardEl = document.getElementById('playerDiscard')
 let compDeckEl = document.getElementById('compDeck')
 let compHostagesEl = document.getElementById('compHostages')
 let compDiscardEl = document.getElementById('compDiscard')
-let startBtnEl = document.getElementById('startBtn')
+let flipBtnEl = document.getElementById('flipBtn')
 let playerScoreEl =  document.getElementById('playerScoreboard')
 let compScoreEl = document.getElementById('compScoreboard')
 let gameBegin = true;
@@ -27,7 +27,7 @@ let inducewar = 0;
 let doublewar = 0;
 h3El.innerHTML = "Begin Game by clicking 'Flip Card' button below!"
 
-let flipCardButton = document.getElementById('startBtn');
+let flipCardButton = document.getElementById('flipBtn');
 let collectCardButton = document.getElementById('collectBtn');
 
 // Event listeners
