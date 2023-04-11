@@ -16,7 +16,7 @@ let playerDiscardEl = document.getElementById('playerDiscard')
 let compDeckEl = document.getElementById('compDeck')
 let compHostagesEl = document.getElementById('compHostages')
 let compDiscardEl = document.getElementById('compDiscard')
-let flipBtnEl = document.getElementById('flipBtn')
+// let flipBtnEl = document.getElementById('flipBtn')
 let playerScoreEl =  document.getElementById('playerScoreboard')
 let compScoreEl = document.getElementById('compScoreboard')
 let gameBegin = true;
@@ -31,7 +31,7 @@ let flipCardButton = document.getElementById('flipBtn');
 let collectCardButton = document.getElementById('collectBtn');
 
 // Event listeners
-document.getElementById('startBtn').addEventListener('click', function () {  
+document.getElementById('flipBtn').addEventListener('click', function () {  
   if ((compDeck.length === 0 || playerDeck.length === 0) && gameBegin === false) {
     if (compDeck.length === 0) {
       h3El.innerHTML = "Player Wins!"
