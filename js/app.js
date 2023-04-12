@@ -67,7 +67,7 @@ document.getElementById('flipBtn').addEventListener('click', function () {
       return;
     }
 
-    collectCardButton.disabled = true
+    
     for (var i = 0; i < 3; i++) {
       let topCard = compDeck.splice(0, 1)[0]
       compHostages.unshift(topCard)
@@ -94,6 +94,8 @@ document.getElementById('flipBtn').addEventListener('click', function () {
     } else{
     topCardPlayer = playerDeck.splice(0, 1)[0];
     }
+    renderPlayer(topCardPlayer, playerDiscard)
+    playerDiscard.unshift(topCardPlayer)
     if(playerDiscard[0].value  != compDiscard[0].value)
     {
       h3El.innerHTML = " "
@@ -108,9 +110,9 @@ document.getElementById('flipBtn').addEventListener('click', function () {
       war = true;
       collectCardButton.disabled = true;
     }
-    renderPlayer(topCardPlayer, playerDiscard)
-    playerDiscard.unshift(topCardPlayer)
-    } else {
+    
+  }
+  else {
       h3El.innerHTML= " "
       collectCardButton.disabled = false
       compCardPicked = compDeck.splice(0, 1)[0]
@@ -141,7 +143,10 @@ document.getElementById('flipBtn').addEventListener('click', function () {
         flipCardButton.disabled = false;
         war = true;
         collectCardButton.disabled = true;
-        return;
+        
+      }
+      else{
+        flipCardButton.disabled = true; 
       }
     }
     inducewar ++;

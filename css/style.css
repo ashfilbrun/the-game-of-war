@@ -105,36 +105,18 @@ title {
   padding: 5px;
   height: 60px;
 }
-/* 
+
 .flipBtn {
-  font-family: 'Raleway', sans-serif;
   margin-top: 2vh;
-  color: rgba(157, 23, 132, 0.95);
-  background-color: #afb7e5;
-  font-weight: bold;
-  border: 2px solid #afb7e5;
-  border-radius: 20px;
-  padding: 5px;
+  flex-direction: row;
 }
 
 .collectBtn {
-  font-family: 'Raleway', sans-serif;
   margin-top: 2vh;
-  color: rgba(157, 23, 132, 0.95);
-  background-color: #ffffff;
-  font-weight: bold;
-  border: 2px solid #afb7e5; 
-  border-radius: 20px;
-  padding: 5px;
+  flex-direction: row;
 }
 
 .resetBtn {
-  font-family: 'Raleway', sans-serif;
   margin-top: 2vh;
-  color: rgba(157, 23, 132, 0.95);
-  background-color: #afb7e5;
-  font-weight: bold;
-  border: 2px solid #afb7e5;
-  border-radius: 20px;
-  padding: 5px;
-} */
+  flex-direction: row;
+}
