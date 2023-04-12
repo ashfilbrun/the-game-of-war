@@ -32,6 +32,7 @@ let collectCardButton = document.getElementById('collectBtn');
 
 // Event listeners
 document.getElementById('flipBtn').addEventListener('click', function () {  
+  console.log(inducewar)
   if ((compDeck.length === 0 || playerDeck.length === 0) && gameBegin === false) {
     if (compDeck.length === 0) {
       h3El.innerHTML = "Player Wins!"
@@ -80,7 +81,7 @@ document.getElementById('flipBtn').addEventListener('click', function () {
     renderComputer(topCardComp, compDiscard)
     compDiscard.unshift(topCardComp)
     let topCardPlayer;
-    if(inducewar === 8 )
+    if(inducewar === 8 || inducewar == 9 )
     {
       for(var i = 0; i < playerDeck.length; i++)
       {
@@ -177,6 +178,12 @@ document.getElementById('flipBtn').addEventListener('click', function () {
   })
   document.getElementById('collectBtn').addEventListener('click', function()
   {
+    if(playerDiscard.length == 0 || compDiscard.length == 0)
+    {
+      return;
+
+
+    }
     collectCardButton.disabled = true
     let topCardComp = compDiscard[0]
     let topCardPlayer = playerDiscard[0]
@@ -279,6 +286,7 @@ document.getElementById('flipBtn').addEventListener('click', function () {
       }
       gameBegin = false;
     } 
+    collectCardButton.disabled  = true
     compScoreEl.innerHTML= compDeck.length
     playerScoreEl.innerHTML = playerDeck.length
   }
