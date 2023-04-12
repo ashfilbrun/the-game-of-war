@@ -81,8 +81,7 @@ document.getElementById('flipBtn').addEventListener('click', function () {
     renderComputer(topCardComp, compDiscard)
     compDiscard.unshift(topCardComp)
     let topCardPlayer;
-    if(inducewar === 8 || inducewar == 9 )
-    {
+    if(inducewar === 4 || inducewar === 9 || inducewar === 10 || inducewar === 14 || inducewar === 17 || inducewar === 19 || inducewar === 23 || inducewar === 27 || inducewar === 28 || inducewar === 35 || inducewar === 38 || inducewar === 39 || inducewar === 44 || inducewar === 45 || inducewar === 46) {
       for(var i = 0; i < playerDeck.length; i++)
       {
         if(playerDeck[i].value === topCardComp.value)
@@ -119,7 +118,7 @@ document.getElementById('flipBtn').addEventListener('click', function () {
       compCardPicked = compDeck.splice(0, 1)[0]
       renderComputer(compCardPicked,compDiscard)
       compDiscard.unshift(compCardPicked)
-      if(inducewar === 3 || inducewar === 8 || inducewar === 9)
+      if(inducewar === 3 || inducewar === 8 || inducewar === 9 || inducewar === 13 || inducewar === 16 || inducewar === 18 || inducewar === 22 || inducewar === 26 || inducewar === 27 || inducewar === 34 || inducewar === 37 || inducewar === 38 || inducewar === 43 || inducewar === 44 || inducewar === 45)
       {
         for(var i = 0; i < playerDeck.length; i++)
         {
