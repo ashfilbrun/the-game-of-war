@@ -30,8 +30,9 @@ let flipCardButton = document.getElementById('flipBtn');
 let collectCardButton = document.getElementById('collectBtn');
 
 // Event listeners
-document.getElementById('flipBtn').addEventListener('click', 
-  function () 
+document.getElementById('flipBtn').addEventListener('click', flipButton)
+
+function flipButton()
   {  
     if ((compDeck.length === 0 || playerDeck.length === 0) && gameBegin === false) {
       if (compDeck.length === 0) 
@@ -162,11 +163,11 @@ document.getElementById('flipBtn').addEventListener('click',
     inducewar ++;
     compScoreEl.innerHTML= compDeck.length
     playerScoreEl.innerHTML = playerDeck.length
-  }
-)
+}
 
-document.getElementById('resetBtn').addEventListener('click', 
-  function ()
+
+document.getElementById('resetBtn').addEventListener('click', resetButton)
+function resetButton()
   {
     gameBegin = true
     compDeck = []
@@ -188,14 +189,15 @@ document.getElementById('resetBtn').addEventListener('click',
     flipCardButton.disabled = false
     collectCardButton.disabled= true
   }
-)
 
-document.getElementById('collectBtn').addEventListener('click', 
-  function()
+
+document.getElementById('collectBtn').addEventListener('click', collectButton)
+
+function collectButton()
+{
+  if(playerDiscard.length == 0 || compDiscard.length == 0)
   {
-    if(playerDiscard.length == 0 || compDiscard.length == 0)
-    {
-      return;
+    return;
     }
     collectCardButton.disabled = true
     let topCardComp = compDiscard[0]
@@ -229,7 +231,7 @@ document.getElementById('collectBtn').addEventListener('click',
     compScoreEl.innerHTML= compDeck.length
     playerScoreEl.innerHTML = playerDeck.length
   }
-)
+
 
 init()
 function init() {
