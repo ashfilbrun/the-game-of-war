@@ -23,6 +23,8 @@ body h1{
   padding: 10px;
   margin-top: 70px;
   margin-bottom: 10px;
+  border: 2px solid black;
+  text-align: auto;
 }
 
 body h2 {
@@ -33,10 +35,11 @@ body h2 {
   font-weight: 500;
   color: black;
   border-radius: 25px;
-  border: black;
   text-align: center;
   margin-bottom:60px;
   padding: 5px;
+  border: 2px solid black;
+  text-align: auto;
 }
 
 body h3 {
@@ -51,23 +54,14 @@ body h3 {
   margin-bottom:60px;
   font-weight: bold;
   padding: 5px;
+  border: 2px solid black;
+  text-align: auto;
 }
 
 title {
   font-family: 'Raleway', sans-serif;
   font-size: large;
   color: black;
-}
-
-.scoreboard {
-  font-family: 'Raleway', sans-serif;
-  color: white;
-  display: flex;
-  align-items: stretch;
-  font-size: 14px;
-  justify-content: center;
-  flex-basis: auto;
-  font-weight: bold;
 }
 
 .container {
@@ -78,7 +72,7 @@ title {
 }
 
 .card {
-  margin: 3vh;
+  margin: 0 auto;
 }
 
 .card.outline {
@@ -87,7 +81,20 @@ title {
 }
 
 .card.shadow {
-  box-shadow: 7px 7px 7px 0 rgba(255, 153, 236, 0.95) !important;
+  box-shadow: 7px 7px 7px 0 rgba(255, 115, 229, 0.95) !important;
+}
+
+.scoreboard {
+  font-family: 'Raleway', sans-serif;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  color: white;
+  display: flex;
+  align-items: stretch;
+  font-size: 14px;
+  justify-content: center;
+  flex-basis: auto;
+  font-weight: bold;
 }
 
 .buttons {
