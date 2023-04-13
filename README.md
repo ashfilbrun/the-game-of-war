@@ -1,6 +1,8 @@
 The Game of War!
 
+
 ![image](/images/Screenshot%202023-04-07%20at%205.39.58%20AM.png)
+
 
 I created a version of the classic card game "War". I chose this game because I loved playing this game with my friends at school as a kid, and I thought it would be a good challenge for me to remake a web version of it. This version war is set up where one player battles against the computer.
 
@@ -10,9 +12,11 @@ If both players' cards have equal value, then "War" will be triggered, and both 
 
 Game play ends, and a winner is declared when either the computer or the player runs out of cards. At this point, the player can restart the game by hitting the "Reset Game" button to play again.
 
+
 CLICK HERE TO PLAY!! --> https://eloquent-madeleine-873448.netlify.app/
 
-Attributions:
+
+## Attributions
 
 - MDN.com
 - Fonts from https://fonts.google.com/
@@ -20,15 +24,17 @@ Attributions:
 - Favicon from https://icons8.com/icons/set/favicon
 
 
-Technologies Used: 
+## Technologies Used
+
 - JavaScript
 - HTML
 - CSS
 - VSCode
 - GitHub
 
-Next Steps: 
-Icebox items:
+
+## Next Steps (Icebox items)
+
 - make game mobile-friendly
 - add light mode
 - play music during game

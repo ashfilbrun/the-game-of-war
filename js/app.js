@@ -29,7 +29,6 @@ h3El.innerHTML = "Begin Game by clicking 'Flip Card' button below!"
 let flipCardButton = document.getElementById('flipBtn');
 let collectCardButton = document.getElementById('collectBtn');
 
-// Event listeners
 document.getElementById('flipBtn').addEventListener('click', flipButton)
 
 function flipButton()
@@ -165,7 +164,6 @@ function flipButton()
     playerScoreEl.innerHTML = playerDeck.length
 }
 
-
 document.getElementById('resetBtn').addEventListener('click', resetButton)
 function resetButton()
   {
@@ -189,7 +187,6 @@ function resetButton()
     flipCardButton.disabled = false
     collectCardButton.disabled= true
   }
-
 
 document.getElementById('collectBtn').addEventListener('click', collectButton)
 
@@ -306,7 +303,7 @@ function init() {
     }
       gameBegin = false;
   }
-  collectCardButton.disabled  = true
+  collectCardButton.disabled = true
   compScoreEl.innerHTML= compDeck.length
   playerScoreEl.innerHTML = playerDeck.length
 }
