@@ -1,50 +1,71 @@
 body {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Raleway', sans-serif;
   background-image: url("https://images.pexels.com/photos/4737484/pexels-photo-4737484.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
   background-position: center center;
   background-attachment: fixed;
   background-color: #5b9fe5;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+header {
   display: flex;
+  justify-content: center;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  text-align: center;
+  word-wrap: normal;
+  color: black;
+  padding: 10px;
+  max-width: 1500px;
+  min-width: 320px;
 }
 
-body h1{
-  font-family: 'Raleway', sans-serif;
+.title {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   background-color: rgba(255, 115, 229, 0.95);
-  color: black;
+  text-align: center;
   font-size: 48px;
   font-weight: 700;
+  color: black;
+  border-radius: 60px;
+  border: 2px solid black;
+  padding: 20px;
+  margin: 20px;
+}
+
+h2 {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  word-spacing: 4px;
+  align-items: center;
+  font-family: 'Raleway', sans-serif;
+  background-color: #5b9fe5;
+  font-size: 18px;
+  color: black;
   border-radius: 60px;
   text-align: center;
-  padding: 10px;
-  margin-top: 10 auto;
-  margin-bottom: 10px;
+  margin: 20px;
+  padding: 20px;
   border: 2px solid black;
-  text-align: auto;
 }
 
-body h2 {
+h3 {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   font-family: 'Raleway', sans-serif;
   background-color: #5b9fe5;
-  font-display: center;
-  font-size: 18px;
-  font-weight: bold;
-  color: black;
-  border-radius: 25px;
-  text-align: center;
-  margin-bottom:60px;
-  padding: 10px;
-  border: 2px solid black;
-  text-align: auto;
-}
-
-body h3 {
-  font-family: 'Raleway', sans-serif;
-  background-color: #5b9fe5;
-  font-display: center;
   font-size: 18px;
   color: black;
   border-radius: 25px;
@@ -54,7 +75,6 @@ body h3 {
   font-weight: bold;
   padding: 10px;
   border: 2px solid black;
-  text-align: auto;
 }
 
 title {
@@ -65,13 +85,23 @@ title {
 
 .container {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Raleway', sans-serif;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  padding: 15px;
 }
 
 .card {
-  margin: 0 auto;
+  margin: 10px;
 }
 
 .card.outline {
@@ -83,33 +113,59 @@ title {
   box-shadow: 7px 7px 7px 0 rgba(255, 115, 229, 0.95) !important;
 }
 
+#compHostages {
+  background-color: lightgray;
+}
+
+#compDiscard {
+  background-color: lightgray;
+}
+
+#playerHostages {
+background-color: #88bbee;
+}
+
+#playerDiscard {
+  background-color: #88bbee;
+}
+
 .scoreboard {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   font-family: 'Raleway', sans-serif;
   margin-top: 30px;
-  margin-bottom: 30px;
-  color: white;
-  display: flex;
-  align-items: stretch;
+  color: lightgray;
   font-size: 14px;
+  border: black 2px solid;
+  border-radius: 60px;
+  padding: 20px;
+  background-color: rgb(0, 0, 0, 0.5) ;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  flex-basis: auto;
-  font-weight: bold;
+  align-items: center;
 }
 
 .buttons {
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  background-color: rgba(255, 115, 229, 0.95);
+  color: rgb(0, 0, 0);
   font-family: 'Raleway', sans-serif;
+  font-weight: bold;
   margin-top: 30px;
   border-radius: 40px;
-  color: rgb(0, 0, 0);
-  background-color: rgba(255, 115, 229, 0.95);
-  font-weight: bold;
   border: 2px solid black;
-  padding: 5px;
-  height: 60px;
+  padding: 10px;
+  min-width: 130px;
 }
 
 .flipBtn {
@@ -125,4 +181,25 @@ title {
 .resetBtn {
   margin-top: 2vh;
   flex-direction: row;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  color: lightgray;
+  font-size: 11px;
+  margin-top: auto;
+  position: relative;
+  padding: 50px;
+  margin-top: 20px;
+}
+
+a {
+  color: lightgray;
+}
+
+p {
+  text-align: center;
 }

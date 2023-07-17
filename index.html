@@ -15,23 +15,39 @@
 	<title>The Game of War!</title>
 </head>
 <body>
-	<h1>Welcome to the Game of War!</h1>
-	<h2>In order to play, click the "Flip Card" button. At that point, 26 cards will be dealt face down to each player. Click the "Flip Card" button again to battle the other player by revealing a card face up simultaneously with the other player. The player with the highest value card wins the round. Click the "Collect Cards" button to distribute discarded cards to the winner of the round. If both players cards have equal value then "War" will be triggered and both players will lay three more cards face down on their "Hostages" piles followed by one card face up on their discard piles. This will only happen once the "Flip Card" button is pressed again. The player with the highest value card wins. If both players lay equal value cards again, then "War" will be triggered once more. Like before, the player with the highest value card wins. Game play ends and a winner is declared when either the computer or the player runs out of cards. At this point, the player can restart the game by hitting the "Reset Game" button to play again.</h2>
-	<h3 id="h3">Click 'Flip Card' to play!</h3>
+	<header>
+		<h1 class="title">Welcome to the Game of War!</h1>
+		<h2>In order to play, click the "Flip Card" button. At that point, 26 cards will be dealt face down to each player. Click the "Flip Card" button again to battle the other player by revealing a card face up simultaneously with the other player. The player with the highest value card wins the round. Click the "Collect Cards" button to distribute discarded cards to the winner of the round. If both players cards have equal value then "War" will be triggered and both players will lay three more cards face down on their "Hostages" piles followed by one card face up on their discard piles. This will only happen once the "Flip Card" button is pressed again. The player with the highest value card wins. If both players lay equal value cards again, then "War" will be triggered once more. Like before, the player with the highest value card wins. Game play ends and a winner is declared when either the computer or the player runs out of cards. At this point, the player can restart the game by hitting the "Reset Game" button to play again.</h2>
+	</header>
 	<div class="container">
-		<div id='compDeck' class='card large back-blue shadow'></div>
-		<div id='compDiscard' class='card large outline'></div>
-		<div id="compHostages" class="card large outline"></div>
-		<div id="playerHostages" class="card large outline"></div>
-		<div id="playerDiscard" class="card large outline"></div>
-		<div id="playerDeck" class="card large back-blue shadow"></div>
+		<h3 id="h3">Begin Game by clicking 'Flip Card' button below!</h3>
+		<div class="cards">
+			<div id='compDeck' class='card large back-blue shadow'></div>
+			<div id='compDiscard' class='card large outline'></div>
+			<div id="compHostages" class="card large outline"></div>
+			<div id="playerHostages" class="card large outline"></div>
+			<div id="playerDiscard" class="card large outline"></div>
+			<div id="playerDeck" class="card large back-blue shadow"></div>
+		</div>
+		<div class="scoreboard">
+			<div class="compScoreboard">Computer Cards Remaining:&nbsp&nbsp&nbsp&nbsp&nbsp
+				<div id="compScoreboard"></div>
+			</div>
+			<div class="playerScoreboard">Player Cards Remaining:
+				<div id="playerScoreboard"></div>
+			</div>
+		</div>
+		<div class="button-container">
+			<button id="flipBtn" class="buttons">Flip Card</button>
+			<button id="collectBtn" class="buttons">Collect Cards</button>
+			<button id="resetBtn" class="buttons">Reset Game</button>
+		</div>
+		<footer>
+			<p>This application was created and developed with care by Ashlan Filbrun ©2023&nbsp;</p>
+			<a href="www.ashlanfilbrun.com">www.ashlanfilbrun.com</a>&nbsp;
+			<a href="https://github.com/ashfilbrun">Github</a>&nbsp;
+			<a href="https://www.linkedin.com/in/ashlanfilbrun/">LinkedIn</a>
+		</footer>
 	</div>
-	<div class="scoreboard">
-		<div class="compScoreboard">Computer Cards Remaining:&nbsp&nbsp&nbsp&nbsp&nbsp<div id="compScoreboard"></div></div>
-		<div class="playerScoreboard">Player Cards Remaining:<div id="playerScoreboard"></div></div>
-	</div>
-		<button id="flipBtn" class="buttons">Flip Card</button>
-		<button id="collectBtn" class="buttons">Collect Cards</button>
-		<button id="resetBtn" class="buttons">Reset Game</button>
 </body>
 </html>

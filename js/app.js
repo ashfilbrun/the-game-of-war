@@ -34,6 +34,15 @@ document.getElementById('flipBtn').addEventListener('click', flipButton)
 
 function flipButton()
   {  
+    console.log(compDeck)
+    console.log(playerDeck)
+    console.log(compDiscard)
+    console.log(playerDiscard)
+    console.log("gameBegin" , gameBegin)
+    console.log("war", war)
+    console.log("inducewar", inducewar)
+    
+
     if ((compDeck.length === 0 || playerDeck.length === 0) && gameBegin === false) {
       if (compDeck.length === 0) 
       {
@@ -87,6 +96,7 @@ function flipButton()
       renderComputer(topCardComp, compDiscard)
       compDiscard.unshift(topCardComp)
       let topCardPlayer;
+      let sameValueFound= false;
 
       if(inducewar === 4 || inducewar === 9 || inducewar === 10 || inducewar === 14 || inducewar === 17 || inducewar === 19 || inducewar === 23 || inducewar === 27 || inducewar === 28 || inducewar === 35 || inducewar === 38 || inducewar === 39 || inducewar === 44 || inducewar === 45 || inducewar === 46) 
       {
@@ -96,11 +106,12 @@ function flipButton()
           {
             topCardPlayer = playerDeck[i]
             playerDeck.splice(i,1)
+            sameValueFound = true;
             break;
           }
         }
       } 
-      else
+      else if(sameValueFound == false)
       {
         topCardPlayer = playerDeck.splice(0, 1)[0];
       }
@@ -123,11 +134,14 @@ function flipButton()
     }
     else 
     {
+      gameBegin = false;
       h3El.innerHTML= " "
       collectCardButton.disabled = false
       compCardPicked = compDeck.splice(0, 1)[0]
       renderComputer(compCardPicked,compDiscard)
       compDiscard.unshift(compCardPicked)
+      let sameValueFound = false;
+
       if(inducewar === 3 || inducewar === 8 || inducewar === 9 || inducewar === 13 || inducewar === 16 || inducewar === 18 || inducewar === 22 || inducewar === 26 || inducewar === 27 || inducewar === 34 || inducewar === 37 || inducewar === 38 || inducewar === 43 || inducewar === 44 || inducewar === 45)
       {
         for(var i = 0; i < playerDeck.length; i++)
@@ -136,18 +150,19 @@ function flipButton()
           {
             playerCardPicked = playerDeck[i]
             playerDeck.splice(i,1)
+            sameValueFound = true;
             break;
           }
         }
         doublewar++;
       } 
-      else
+      else if(sameValueFound == false)
       {
         playerCardPicked = playerDeck.splice(0, 1)[0]
       }
       renderPlayer(playerCardPicked, playerDiscard)
       playerDiscard.unshift(playerCardPicked)
-      flipCardButton.disabled = true;
+    
       if(playerDiscard[0].value  == compDiscard[0].value)
       {
         h3El.innerHTML = "War!"
@@ -157,7 +172,11 @@ function flipButton()
       }
       else
       {
-        flipCardButton.disabled = true; 
+        h3El.innerHTML = " "
+        flipCardButton.disabled = true;
+        war = false;
+        collectCardButton.disabled = false; 
+
       }
     }
     inducewar ++;
@@ -303,7 +322,7 @@ function init() {
       playerCardPicked = useDeck.splice(randIdx, 1)[0]    
       playerDeck.unshift(playerCardPicked)
     }
-      gameBegin = false;
+     
   }
   collectCardButton.disabled  = true
   compScoreEl.innerHTML= compDeck.length
@@ -329,7 +348,7 @@ function renderPlayerHostage(playerHostages)
 }
 function renderComputer(compCardPicked, compDiscard)
 {
-  if (compDiscard.length >=1 ) 
+  if (compDiscard.length >= 1 ) 
   {
     compDiscardEl.classList.remove("outline", compDiscard[0].title)
   }
@@ -338,7 +357,7 @@ function renderComputer(compCardPicked, compDiscard)
   {
     compDiscardEl.classList.add(compCardPicked['title'])
   }
-  if (compDiscard.length === initialDeck.length) 
+  if (compDiscard.length === 26) 
   {
     compDiscardEl.classList.add('shadow')
     compDeckEl.classList.remove('shadow')
@@ -360,7 +379,7 @@ function renderPlayer(playerCardPicked, playerDiscard)
   {
     playerDiscardEl.classList.add(playerCardPicked['title'])
   }
-  if (playerDiscard.length === initialDeck.length) 
+  if (playerDiscard.length === 26) 
   {
     playerDiscardEl.classList.add('shadow')
     playerDeckEl.classList.remove('shadow')
