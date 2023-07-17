@@ -35,8 +35,6 @@ CLICK HERE TO PLAY!! --> https://eloquent-madeleine-873448.netlify.app/
 
 ## Next Steps (Icebox items)
 
-- make game mobile-friendly
 - add light mode
 - play music during game
-- add personal name credit
 - add animation
