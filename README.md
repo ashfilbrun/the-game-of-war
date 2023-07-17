@@ -13,7 +13,7 @@ If both players' cards have equal value, then "War" will be triggered, and both 
 Game play ends, and a winner is declared when either the computer or the player runs out of cards. At this point, the player can restart the game by hitting the "Reset Game" button to play again.
 
 
-CLICK HERE TO PLAY!! --> https://eloquent-madeleine-873448.netlify.app/
+CLICK HERE TO PLAY!! --> https://thegameofwaraf.netlify.app/
 
 
 ## Attributions
